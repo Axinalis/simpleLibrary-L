@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  webapp:
+    build: ./
+    container_name: "library"
+    ports:
+      -   "8083:8083"
+    depends_on:
+      -   db
+    environment:
+      DB_URL: "jdbc:postgresql://db:5432/library"
+      DB_PASSWORD: "password"
+      DB_USERNAME: "postgres"
+  db:
+    image: "postgres:latest"
+    container_name: "database"
+    ports:
+      -   "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "library"

@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - logicalFilePath: db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: maybeAxinalis
+      labels: "CreateTable"
+      comment: "Create table library"
+      changes:
+        - createTable:
+            tableName: library
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pages
+                  type: INT
+                  constraints:
+                    nullable: false
